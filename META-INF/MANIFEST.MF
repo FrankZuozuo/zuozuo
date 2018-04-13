@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+
+
+Implementation-Title: zuozuo
+Implementation-Version: 1.0.0
+
+
+Application-Name: zuozuo
+Application-Description: A Springboot Experimental Project
+Application-Version: 1.0.0
+Application-SymbolicName: zuozuo
+Application-TraceLevels: unknown
+
+
+Created-By: zuozuo
+
