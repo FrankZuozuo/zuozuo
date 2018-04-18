@@ -70,7 +70,7 @@ public class Api {
     @NoArgsConstructor
     @AllArgsConstructor
     @Accessors(chain = true)
-    private class Meta implements MetaEnum {
+    private static class Meta implements MetaEnum {
         private int code;
         private String reasonPhraseUS, reasonPhraseCN;
 

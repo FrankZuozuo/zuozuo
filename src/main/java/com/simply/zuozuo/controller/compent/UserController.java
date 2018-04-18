@@ -3,6 +3,7 @@ package com.simply.zuozuo.controller.compent;
 import com.simply.zuozuo.consts.enums.HttpStatusEnum;
 import com.simply.zuozuo.controller.Api;
 import com.simply.zuozuo.entity.User;
+import com.simply.zuozuo.entity.validate.group.UserGroup;
 import com.simply.zuozuo.mapper.UserMapper;
 import com.simply.zuozuo.repo.UserRepo;
 import com.simply.zuozuo.util.BindingResultUtils;
@@ -10,10 +11,9 @@ import com.simply.zuozuo.util.Print;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -38,7 +38,7 @@ public class UserController {
     /**
      * @Valid 指定需要验证的参数
      */
-    public String add(@Valid User user, BindingResult bindingResult) {
+    public String add(@Validated({UserGroup.class}) User user, BindingResult bindingResult) {
 
         BindingResultUtils.captureError(bindingResult);
 
@@ -47,6 +47,10 @@ public class UserController {
 
 
 
+    @RequestMapping(value = "/test2",method = {RequestMethod.POST,RequestMethod.DELETE})
+    public Api test1() {
+        return Api.returnWith().fail(HttpStatusEnum.MOVED_PERMANENTLY);
+    }
 
     @RequestMapping(value = "/test",method = {RequestMethod.POST,RequestMethod.DELETE})
     public Api test() {

@@ -34,6 +34,8 @@ public class ApplicationContextAwareImpl implements ApplicationContextAware {
         log.info("应用程序上下文 ： [{}]", "开始初始化");
         ApplicationContextUtils.applicationContext = applicationContext;
 
+        ApplicationContext context = ApplicationContextUtils.applicationContext;
+
 
         log.info("应用程序上下文 getId ： [{}]", applicationContext.getId());
         log.info("应用程序上下文 getApplicationName ： [{}]", applicationContext.getApplicationName());

@@ -1,5 +1,6 @@
 package com.simply.zuozuo.entity;
 
+import com.simply.zuozuo.entity.validate.group.UserGroup;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -22,9 +24,10 @@ import java.util.Date;
 @Entity
 @Table(name = "user")
 @XmlRootElement
-public class User {
+public class User implements Serializable{
 
 
+    private static final long serialVersionUID = -6176713780188413811L;
     @NotNull
     @Id
     @GeneratedValue
@@ -63,7 +66,7 @@ public class User {
      * 非空验证并且忽略空格
      * "  "也会被认为是不合法的
      */
-    @NotBlank
+    @NotBlank(groups = {UserGroup.class})
     private String describe;
 
     /**

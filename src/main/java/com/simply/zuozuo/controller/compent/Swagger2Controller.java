@@ -63,7 +63,7 @@ public class Swagger2Controller {
     @NoArgsConstructor
     @AllArgsConstructor
     @Accessors(chain = true)
-    public class SwaggerClass{
+    public static class SwaggerClass{
 
         @ApiModelProperty(value = "名称")
         private String name;
