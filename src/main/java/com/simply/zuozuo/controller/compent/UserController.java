@@ -40,19 +40,20 @@ public class UserController {
      */
     public String add(@Validated({UserGroup.class}) User user, BindingResult bindingResult) {
 
+
         BindingResultUtils.captureError(bindingResult);
 
         return user.toString();
     }
 
 
-
-    @RequestMapping(value = "/test2",method = {RequestMethod.POST,RequestMethod.DELETE})
+    @RequestMapping(value = "/test2", method = {RequestMethod.GET, RequestMethod.DELETE})
     public Api test1() {
+        int x = 5 / 0;
         return Api.returnWith().fail(HttpStatusEnum.MOVED_PERMANENTLY);
     }
 
-    @RequestMapping(value = "/test",method = {RequestMethod.POST,RequestMethod.DELETE})
+    @RequestMapping(value = "/test", method = {RequestMethod.POST, RequestMethod.DELETE})
     public Api test() {
         return Api.returnWith().fail(HttpStatusEnum.MOVED_PERMANENTLY);
     }

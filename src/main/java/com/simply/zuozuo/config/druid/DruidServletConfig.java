@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 
 
 @WebServlet(
+        name = "druidServlet",
         urlPatterns = {
                 "/druid/*"
         },
@@ -26,7 +27,6 @@ import javax.servlet.annotation.WebServlet;
 )
 public class DruidServletConfig extends StatViewServlet{
 
-
-
+        private static final long serialVersionUID = 2971905851511493311L;
 }
 

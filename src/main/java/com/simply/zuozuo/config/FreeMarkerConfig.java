@@ -52,7 +52,7 @@ public class FreeMarkerConfig {
         log.info("ctx is : {}", ctx);
 
         // 加载html的资源路径
-        configuration.setSharedVariable("ctx", ctx);
+        configuration.setSharedVariable("ctx", ctx + "/static");
 
         viewResolver.setOrder(0);
 

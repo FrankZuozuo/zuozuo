@@ -69,7 +69,12 @@ public class IndexController {
     }
 
 
-    @GetMapping
+    @GetMapping(value = "/404")
+    public String _404(){
+        return "404";
+    }
+
+
     @RequestMapping("/index")
     public String index(){
 
