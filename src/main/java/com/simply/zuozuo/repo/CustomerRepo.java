@@ -1,8 +1,7 @@
 
 package com.simply.zuozuo.repo;
 
-import com.simply.zuozuo.entity.Customer;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.simply.zuozuo.entity.po.Customer;
 import org.springframework.lang.Nullable;
 import org.springframework.transaction.annotation.Transactional;
 

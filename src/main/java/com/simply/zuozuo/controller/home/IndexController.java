@@ -1,7 +1,7 @@
 package com.simply.zuozuo.controller.home;
 
 import com.google.common.collect.Lists;
-import com.simply.zuozuo.entity.User;
+import com.simply.zuozuo.entity.po.User;
 import com.simply.zuozuo.mapper.UserMapper;
 import com.simply.zuozuo.util.Print;
 import com.simply.zuozuo.util.annotation.Mark;

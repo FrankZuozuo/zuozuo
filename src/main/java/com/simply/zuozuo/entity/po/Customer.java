@@ -1,4 +1,4 @@
-package com.simply.zuozuo.entity;
+package com.simply.zuozuo.entity.po;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,6 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+
+/*
+ * # Copyright (c) 2010-2018 Online zuozuo
+ * # Copyright (c) 2018 Online zuozuo
+ * # @email : m15197447018@gmail.com
+ */
 
 /**
  * @author Created by 谭健 on 2018/4/3 0003. Tuesday. 14:48.

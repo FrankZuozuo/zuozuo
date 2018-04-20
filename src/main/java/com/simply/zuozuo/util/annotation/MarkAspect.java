@@ -1,6 +1,6 @@
 package com.simply.zuozuo.util.annotation;
 
-import com.simply.zuozuo.entity.User;
+import com.simply.zuozuo.entity.po.User;
 import com.simply.zuozuo.util.Print;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;

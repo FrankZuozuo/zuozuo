@@ -1,6 +1,6 @@
 package com.simply.zuozuo.controller.compent;
 
-import com.simply.zuozuo.entity.Customer;
+import com.simply.zuozuo.entity.po.Customer;
 import com.simply.zuozuo.repo.CustomerRepo;
 import com.simply.zuozuo.util.Print;
 import org.springframework.beans.factory.annotation.Autowired;

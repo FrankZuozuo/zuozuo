@@ -19,14 +19,14 @@ import java.util.Set;
 public class RedisTimer {
 
 
-    static void setTimeNow() {
+    public static void setTimeNow() {
 
 
         Jedis jedis = JedisSingleton.getInstance();
 
         String nowTime = jedis.get("now_time");
         if (log.isInfoEnabled()) {
-            log.info("now time : {}", nowTime);
+            log.info("Redis定时器心跳 : {}", nowTime);
         }
 
     }

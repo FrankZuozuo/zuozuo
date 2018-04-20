@@ -1,6 +1,6 @@
 package com.simply.zuozuo.mapper;
 
-import com.simply.zuozuo.entity.User;
+import com.simply.zuozuo.entity.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

@@ -2,18 +2,20 @@ package com.simply.zuozuo.controller.compent;
 
 import com.simply.zuozuo.consts.enums.HttpStatusEnum;
 import com.simply.zuozuo.controller.Api;
-import com.simply.zuozuo.entity.User;
+import com.simply.zuozuo.entity.po.User;
 import com.simply.zuozuo.entity.validate.group.UserGroup;
 import com.simply.zuozuo.mapper.UserMapper;
 import com.simply.zuozuo.repo.UserRepo;
 import com.simply.zuozuo.util.BindingResultUtils;
 import com.simply.zuozuo.util.Print;
+import com.simply.zuozuo.util.UUIDUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -38,12 +40,15 @@ public class UserController {
     /**
      * @Valid 指定需要验证的参数
      */
-    public String add(@Validated({UserGroup.class}) User user, BindingResult bindingResult) {
+    public Api add(@Valid User user, BindingResult bindingResult) {
 
 
         BindingResultUtils.captureError(bindingResult);
 
-        return user.toString();
+        user.setCode(UUIDUtils.randomUUIDWithoutRod());
+        User user1 = userRepo.save(user);
+
+        return Api.returnWith().success(user1);
     }
 
 
@@ -73,14 +78,12 @@ public class UserController {
 
 
     @GetMapping("/namedQuery")
-    public String namedQuery() {
+    public Api namedQuery() {
 
-        userRepo.findAllByAge(1).forEach(
-                user -> {
-                    Print.echo(user.toString());
-                }
-        );
 
-        return "3";
+        User user = userRepo.findByUsername("小明");
+
+
+        return Api.returnWith().success(user);
     }
 }

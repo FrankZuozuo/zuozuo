@@ -12,7 +12,7 @@
     数据库连接池：Druid
     数据库：Mysql，Redis
     模版引擎：Freemarker
-    持久层框架：JPA，Mybaits混合支持
+    持久层框架：JPA，Mybatis混合支持
     集合框架：Guava
     日志框架：logback
     Java版本：1.8
@@ -47,6 +47,8 @@
     
     拦截器链：HandlerInterceptor + WebMvcConfigurationSupport方式
     验证器：javax.validation.final
+    Html转发：HandleHtmlResolver
+    全局异常处理器：HandleExceptionResolver
     
     
 文档：

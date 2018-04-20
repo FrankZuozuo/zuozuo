@@ -1,7 +1,6 @@
 package com.simply.zuozuo.repo;
 
-import com.simply.zuozuo.entity.User;
-import org.springframework.data.jpa.repository.Query;
+import com.simply.zuozuo.entity.po.User;
 
 import java.util.List;
 
@@ -12,5 +11,5 @@ import java.util.List;
 
 public interface UserRepo extends BaseRepo<User,Long>{
 
-    List<User> findAllByAge(Integer age);
+    User findByUsername(String username);
 }
