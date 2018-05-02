@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * © All Rights Reserved.
  */
 
-@RequestMapping("/info")
+@RequestMapping("/open/info")
 @RestController
 public class InfoController {
 

@@ -1,6 +1,7 @@
 package com.simply.zuozuo.controller.home;
 
 import com.google.common.collect.Lists;
+import com.simply.zuozuo.async.AsyncMethod;
 import com.simply.zuozuo.entity.po.User;
 import com.simply.zuozuo.mapper.UserMapper;
 import com.simply.zuozuo.util.Print;
@@ -78,6 +79,8 @@ public class IndexController {
     @RequestMapping("/index")
     public String index(){
 
+
+
         return "index";
     }
 
@@ -92,6 +95,7 @@ public class IndexController {
                     Print.echo(user.toString());
                 }
         );
+
 
 
         mv.addObject("user", users.get(0));

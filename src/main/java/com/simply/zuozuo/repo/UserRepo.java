@@ -1,6 +1,7 @@
 package com.simply.zuozuo.repo;
 
 import com.simply.zuozuo.entity.po.User;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
 
@@ -9,7 +10,10 @@ import java.util.List;
  * © All Rights Reserved.
  */
 
-public interface UserRepo extends BaseRepo<User,Long>{
+public interface UserRepo
+        extends
+        BaseRepo<User, Long>,
+        JpaSpecificationExecutor<User> {
 
     User findByUsername(String username);
 }

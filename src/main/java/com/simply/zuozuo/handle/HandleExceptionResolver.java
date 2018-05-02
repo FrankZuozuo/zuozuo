@@ -1,9 +1,7 @@
 package com.simply.zuozuo.handle;
 
-import com.simply.zuozuo.consts.enums.CustomMetaEnum;
+import com.simply.zuozuo.consts.enums.CustomMetaData;
 import com.simply.zuozuo.consts.enums.ExceptionHandleEnum;
-import com.simply.zuozuo.consts.enums.HttpStatusEnum;
-import com.simply.zuozuo.consts.enums.UserMetaEnum;
 import com.simply.zuozuo.controller.Api;
 import com.simply.zuozuo.exception.ParameterIllegalityException;
 import com.simply.zuozuo.util.stringconn.StringConn;
@@ -28,8 +26,8 @@ public class HandleExceptionResolver {
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseBody
     public Api resolveException(HttpServletRequest request, HttpRequestMethodNotSupportedException e) {
-        String[] supportedMethods = ((HttpRequestMethodNotSupportedException) e).getSupportedMethods();
-        StringBuffer buffer = new StringBuffer(30);
+        String[] supportedMethods = e.getSupportedMethods();
+        StringBuilder buffer = new StringBuilder(30);
         String methods;
         if (supportedMethods != null) {
             for (String method : supportedMethods) {
@@ -37,7 +35,7 @@ public class HandleExceptionResolver {
             }
         }
         methods = buffer.toString().substring(0, buffer.length() - 1);
-        CustomMetaEnum customResult = new CustomMetaEnum(90002, e.getMessage(), StringConn.of("请使用 [", methods, "] 发起请求"));
+        CustomMetaData customResult = new CustomMetaData(90002, e.getMessage(), StringConn.of("请使用 [", methods, "] 发起请求"));
         log.error("请求方式不被支持 ： {}", e.getMessage());
         return Api.returnWith().fail(customResult);
     }
@@ -46,7 +44,7 @@ public class HandleExceptionResolver {
     @ExceptionHandler(ParameterIllegalityException.class)
     @ResponseBody
     public Api resolveException(HttpServletRequest request, ParameterIllegalityException e) {
-        CustomMetaEnum customResult = new CustomMetaEnum(90001, "Parameter illegality", e.getMessage());
+        CustomMetaData customResult = new CustomMetaData(90001, "Parameter illegality", e.getMessage());
         log.error("参数不合法 ： \n{}", e.getMessage());
         return Api.returnWith().fail(customResult);
     }
@@ -54,6 +52,8 @@ public class HandleExceptionResolver {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public Api resolveException(HttpServletRequest request, Exception e) {
+        log.error("Exception is : {}", e.getClass().getName());
+        e.printStackTrace();
         return Api.returnWith().fail(ExceptionHandleEnum.UNKNOWN_EXCEPTION);
     }
 }

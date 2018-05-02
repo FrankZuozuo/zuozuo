@@ -1,5 +1,9 @@
 package com.simply.zuozuo.controller.home;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author Created by 谭健 on 2018/4/11 0011. 星期三. 9:49.
  * © All Rights Reserved.
@@ -30,6 +34,19 @@ public class 老子 {
 
 
     public static void main(String[] args) {
+
+
+        for (int i = 0; i < 50; i++) {
+
+
+            try {
+                Thread.sleep(50L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            int[] ints = new int[700000000];
+        }
+
 
 
         int num = 2147483647 ;

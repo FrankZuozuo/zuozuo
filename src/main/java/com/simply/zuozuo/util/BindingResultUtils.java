@@ -1,5 +1,7 @@
 package com.simply.zuozuo.util;
 
+import com.simply.zuozuo.consts.enums.CustomMetaData;
+import com.simply.zuozuo.controller.Api;
 import com.simply.zuozuo.exception.ParameterIllegalityException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
@@ -16,28 +18,25 @@ import java.util.List;
 public class BindingResultUtils {
 
 
-    public static void captureError(BindingResult bindingResult) throws RuntimeException {
 
-        // 如果有捕获到参数不合法
-        if (bindingResult.hasErrors()) {
-            StringBuffer buffer = new StringBuffer(50);
-            buffer.append(" ");
-            // 得到全部不合法的字段
-            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
 
-            // 遍历不合法字段
-            fieldErrors.forEach(
-                    fieldError -> {
-                        buffer
-                                .append("error field is : [")
-                                .append(fieldError.getField())
-                                .append("] ,message is : ")
-                                .append(fieldError.getDefaultMessage())
-                                .append("\n ");
-                    }
-            );
 
-            throw new ParameterIllegalityException(buffer.toString());
-        }
+    public static Api captureError(BindingResult bindingResult) {
+
+        StringBuffer error = new StringBuffer(50);
+        error.append(" ");
+        List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+        fieldErrors.forEach(
+                fieldError -> {
+                    error
+                            .append("error field is : [")
+                            .append(fieldError.getField())
+                            .append("] ,message is : ")
+                            .append(fieldError.getDefaultMessage())
+                            .append("\n ");
+                }
+        );
+        return Api.returnWith().fail(new CustomMetaData(499, "由于存在非法参数，服务器拒绝响应。", error.toString()));
+
     }
 }

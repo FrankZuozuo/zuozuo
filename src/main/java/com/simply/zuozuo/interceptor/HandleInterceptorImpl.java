@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HandleInterceptorImpl implements HandlerInterceptor {
 
 
+
     private VisitInfoRepo visitInfoRepo() {
         return (VisitInfoRepo) ApplicationContextUtils.applicationContext.getBean("visitInfoRepo");
     }
