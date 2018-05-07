@@ -39,15 +39,16 @@ import java.util.List;
 public class UserController {
 
 
-    @Autowired
     private UserMapper userMapper;
-
-    @Autowired
     private UserRepo userRepo;
-
+    private AsyncMethod asyncMethod;
 
     @Autowired
-    private AsyncMethod asyncMethod;
+    public UserController(UserMapper userMapper, UserRepo userRepo, AsyncMethod asyncMethod) {
+        this.userMapper = userMapper;
+        this.userRepo = userRepo;
+        this.asyncMethod = asyncMethod;
+    }
 
     @PostMapping("/filter")
     public Api filter(User user) {
@@ -67,7 +68,7 @@ public class UserController {
     public Api add(@Valid User user, BindingResult bindingResult) {
 
 
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return BindingResultUtils.captureError(bindingResult);
         }
 

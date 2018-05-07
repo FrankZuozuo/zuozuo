@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.concurrent.TimeoutException;
+
 /**
  * @author Created by 谭健 on 2018/4/23 0023. 星期一. 14:08.
  * © All Rights Reserved.

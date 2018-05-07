@@ -27,8 +27,12 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
 
 
-    @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    public LoginController(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @PostMapping(value = "/login")
     @ResponseBody

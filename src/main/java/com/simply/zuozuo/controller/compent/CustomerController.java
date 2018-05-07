@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
 
 
-    @Autowired
     private CustomerRepo customer;
 
+    @Autowired
+    public CustomerController(CustomerRepo customer) {
+        this.customer = customer;
+    }
 
     @GetMapping("/all")
     public String all() {

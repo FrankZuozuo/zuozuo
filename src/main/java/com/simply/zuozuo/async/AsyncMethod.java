@@ -31,4 +31,6 @@ public class AsyncMethod {
 
         System.out.println("async method");
     }
+
+
 }

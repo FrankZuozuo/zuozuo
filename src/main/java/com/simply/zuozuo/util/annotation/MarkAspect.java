@@ -54,8 +54,16 @@ public class MarkAspect implements Cut {
     @Override
     public void before(JoinPoint joinPoint) {
 
+
+
+
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
+
+
+        // 比如，切入某个类，给这个类扣个屎盆子
+        log.info("我给 {} 扣个屎盆子",method);
+
         Mark mark = method.getAnnotation(Mark.class);
 
         log.info("method name is : {}", method.getName());

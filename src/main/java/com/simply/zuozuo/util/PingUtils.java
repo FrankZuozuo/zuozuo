@@ -16,6 +16,7 @@ package com.simply.zuozuo.util;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeoutException;
 
 public class PingUtils {
 
@@ -26,11 +27,14 @@ public class PingUtils {
      * @param hostName 域名
      * @param timeout  超时
      */
-    public static String getIPByHostName(String hostName, int timeout) {
+    public static String getIPByHostName(String hostName, int timeout){
         try {
             InetAddress address = InetAddress.getByName(hostName);
             try {
                 if (address.isReachable(timeout)) {
+                    if (address.getHostAddress() == null || "null".equalsIgnoreCase(address.getHostAddress())){
+                        return String.valueOf(address.getAddress());
+                    }
                     return address.getHostAddress();
                 }
             } catch (IOException e) {
@@ -39,12 +43,12 @@ public class PingUtils {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        return null;
+        return "连接超时";
     }
 
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        Print.echo(getIPByHostName("www.baidu.com", 100));
+    public static void main(String[] args) {
+        Print.echo(getIPByHostName("ittopic.shapiya.com", 2000));
     }
 
 }

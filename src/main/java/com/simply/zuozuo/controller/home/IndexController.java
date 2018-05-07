@@ -31,16 +31,16 @@ import java.util.List;
 public class IndexController {
 
 
-    @Autowired
     private JavaMailSender mailSender;
-
-
-    @Autowired
     private UserMapper userMapper;
-
-    @Autowired
     private MailProperties mailProperties;
 
+    @Autowired
+    public IndexController(JavaMailSender mailSender, UserMapper userMapper, MailProperties mailProperties) {
+        this.mailSender = mailSender;
+        this.userMapper = userMapper;
+        this.mailProperties = mailProperties;
+    }
 
     @GetMapping("/mail")
     @ResponseBody

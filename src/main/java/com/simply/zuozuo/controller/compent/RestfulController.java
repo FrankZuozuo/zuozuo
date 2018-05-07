@@ -20,9 +20,12 @@ public class RestfulController {
     /**
      * 自动注入RestTemplate用以执行restful访问
      */
-    @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    public RestfulController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @GetMapping(value = "/get")
     public int get(@RequestParam(name = "x", defaultValue = "0") int x) {
