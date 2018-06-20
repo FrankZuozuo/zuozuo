@@ -7,7 +7,7 @@ package com.simply.zuozuo.handle.shiro;
  */
 
 import com.simply.zuozuo.entity.po.User;
-import com.simply.zuozuo.repo.UserRepo;
+import com.simply.zuozuo.dao.repo.UserRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

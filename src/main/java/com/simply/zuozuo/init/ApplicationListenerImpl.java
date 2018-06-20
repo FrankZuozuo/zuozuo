@@ -24,9 +24,4 @@ public class ApplicationListenerImpl implements ApplicationListener<ContextRefre
         log.info("ApplicationListener ： [{}]","启动上下文刷新监听事件");
 
     }
-
-
-
-
-
 }

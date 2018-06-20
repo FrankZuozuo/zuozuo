@@ -6,6 +6,7 @@ package com.simply.zuozuo.async;
  * # @email : m15197447018@gmail.com
  */
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
  * © All Rights Reserved.
  */
 @Component
+@Slf4j
 public class AsyncMethod {
 
 
@@ -23,6 +25,7 @@ public class AsyncMethod {
 
 
         try {
+            log.info("执行异步操作");
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();

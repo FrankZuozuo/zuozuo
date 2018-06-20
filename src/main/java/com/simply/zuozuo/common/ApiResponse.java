@@ -1,8 +1,7 @@
-package com.simply.zuozuo.controller;
+package com.simply.zuozuo.common;
 
 import com.simply.zuozuo.consts.enums.HttpStatusEnum;
 import com.simply.zuozuo.consts.enums.MetaEnum;
-import com.simply.zuozuo.util.Print;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,53 +9,59 @@ import lombok.experimental.Accessors;
 
 import java.util.Date;
 
+/*
+ * # Copyright (c) 2010-2018 Online zuozuo
+ * # Copyright (c) 2018 Online zuozuo
+ * # @email : m15197447018@gmail.com
+ */
+
 /**
  * @author Created by 谭健 on 2018/4/16 0016. 星期一. 9:38.
  * © All Rights Reserved.
  */
 @Data
 @Accessors(chain = true)
-public class Api {
+public class ApiResponse {
 
 
     private Meta meta = new Meta();
     private Object data;
-    private Date currentTimestemp;
+    private Date currentTimestamp;
 
 
-    public Api success(Object data) {
+    public ApiResponse success(Object data) {
         setMeta(HttpStatusEnum.OK);
         this.data = data;
-        this.currentTimestemp = new Date(System.currentTimeMillis());
+        this.currentTimestamp = new Date(System.currentTimeMillis());
         return this;
     }
 
 
-    public Api success(Object data, MetaEnum meta) {
+    public ApiResponse success(Object data, MetaEnum meta) {
         setMeta(meta);
         this.data = data;
-        this.currentTimestemp = new Date(System.currentTimeMillis());
+        this.currentTimestamp = new Date(System.currentTimeMillis());
         return this;
     }
 
 
-    public Api fail(MetaEnum meta) {
+    public ApiResponse fail(MetaEnum meta) {
         setMeta(meta);
-        this.currentTimestemp = new Date(System.currentTimeMillis());
+        this.currentTimestamp = new Date(System.currentTimeMillis());
         return this;
     }
 
 
-    public Api fail(Object data) {
+    public ApiResponse fail(Object data) {
         setMeta(HttpStatusEnum.INTERNAL_SERVER_ERROR);
         this.data = data;
-        this.currentTimestemp = new Date(System.currentTimeMillis());
+        this.currentTimestamp = new Date(System.currentTimeMillis());
         return this;
     }
 
 
-    public static Api returnWith() {
-        return new Api();
+    public static ApiResponse returnWith() {
+        return new ApiResponse();
     }
 
 
@@ -70,7 +75,7 @@ public class Api {
     @NoArgsConstructor
     @AllArgsConstructor
     @Accessors(chain = true)
-    private static class Meta implements MetaEnum {
+    public static class Meta implements MetaEnum {
         private int code;
         private String reasonPhraseUS, reasonPhraseCN;
 

@@ -1,8 +1,8 @@
 package com.simply.zuozuo.controller.home;
 
-import com.simply.zuozuo.controller.Api;
+import com.simply.zuozuo.common.ApiResponse;
 import com.simply.zuozuo.entity.po.User;
-import com.simply.zuozuo.repo.UserRepo;
+import com.simply.zuozuo.dao.repo.UserRepo;
 import com.simply.zuozuo.util.Print;
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,7 +12,6 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -69,6 +68,7 @@ public class LoginController {
             // 在web环境下，Session是基于httpSession的
             Session currentUserSession = currentUser.getSession();
             currentUserSession.setAttribute("key", "value");
+            // 缓存用户信息到session,可以创建更为复杂的 session user类保存用户的常用信息
             currentUserSession.setAttribute("user", user);
         }
 
@@ -79,9 +79,9 @@ public class LoginController {
 
     @GetMapping("/getUser")
     @ResponseBody
-    public Api getUser() {
+    public ApiResponse getUser() {
         Subject currentUser = SecurityUtils.getSubject();
-        return Api.returnWith().success(currentUser.getSession().getAttribute("user"));
+        return ApiResponse.returnWith().success(currentUser.getSession().getAttribute("user"));
     }
 
 

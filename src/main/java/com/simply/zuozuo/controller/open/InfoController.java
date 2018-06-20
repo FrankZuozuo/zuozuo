@@ -7,7 +7,7 @@ package com.simply.zuozuo.controller.open;
  */
 
 import com.google.common.collect.Lists;
-import com.simply.zuozuo.controller.Api;
+import com.simply.zuozuo.common.ApiResponse;
 import com.simply.zuozuo.entity.ao.App;
 import com.simply.zuozuo.entity.ao.Author;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class InfoController {
 
 
     @GetMapping("/app")
-    public Api app() {
+    public ApiResponse app() {
 
         Author author = new Author() {{
             setName("谭健")
@@ -56,6 +56,6 @@ public class InfoController {
         }};
 
 
-        return Api.returnWith().success(app);
+        return ApiResponse.returnWith().success(app);
     }
 }

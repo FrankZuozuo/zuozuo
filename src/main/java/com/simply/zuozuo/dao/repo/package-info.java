@@ -7,6 +7,6 @@
  * 在包级别上用于声明参数和返回值的默认行为是不接受或生成null值。
  */
 @NonNullApi
-package com.simply.zuozuo.repo;
+package com.simply.zuozuo.dao.repo;
 
 import org.springframework.lang.NonNullApi;

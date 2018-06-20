@@ -31,6 +31,11 @@ public class 老子 {
     }
 
 
+    public static void 是非得失(){
+
+
+    }
+
 
 
     public static void main(String[] args) {

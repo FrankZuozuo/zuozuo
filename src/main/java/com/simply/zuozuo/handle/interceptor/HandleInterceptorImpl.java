@@ -1,16 +1,10 @@
-package com.simply.zuozuo.interceptor;
+package com.simply.zuozuo.handle.interceptor;
 
 import com.simply.zuozuo.entity.po.VisitInfo;
-import com.simply.zuozuo.mapper.UserMapper;
-import com.simply.zuozuo.repo.VisitInfoRepo;
+import com.simply.zuozuo.dao.repo.VisitInfoRepo;
 import com.simply.zuozuo.util.ApplicationContextUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

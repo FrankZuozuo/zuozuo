@@ -8,6 +8,7 @@ package com.simply.zuozuo.config;
 
 import com.google.common.collect.Maps;
 
+import com.simply.zuozuo.handle.shiro.HandleAdviceFilter;
 import com.simply.zuozuo.handle.shiro.HandleCredentialsMatcherResolver;
 import com.simply.zuozuo.handle.shiro.HandleShiroAuthResolver;
 import org.apache.shiro.mgt.SecurityManager;
@@ -19,6 +20,7 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.Filter;
 import java.util.Map;
 
 /**
@@ -52,15 +54,20 @@ public class ShiroConfig {
         //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         filterChainDefinitionMap.put("/**", "anon");
-        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
-        factoryBean.setLoginUrl("/blank");
-        // 登录成功后要跳转的链接
-        factoryBean.setSuccessUrl("/index");
+
+        factoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
 
         //未授权界面;
         factoryBean.setUnauthorizedUrl("/403");
-        factoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
+        factoryBean.setLoginUrl("/blank");
+        // 登录成功后要跳转的链接
+        factoryBean.setSuccessUrl("/index");
+        // 注册自定义的过滤器
+        Map<String,Filter> filterMap = Maps.newLinkedHashMap();
+//        filterMap.put("handleAdviceFilter", handleAdviceFilter());
+        factoryBean.setFilters(filterMap);
         return factoryBean;
 
     }
@@ -83,8 +90,16 @@ public class ShiroConfig {
     public HandleShiroAuthResolver shiroRealm() {
         HandleShiroAuthResolver realm = new HandleShiroAuthResolver();
         realm.setCredentialsMatcher(credentialsMatcherResolver());
-        return new HandleShiroAuthResolver();
+        return realm;
     }
+
+
+    @Bean
+    public HandleAdviceFilter handleAdviceFilter(){
+        return new HandleAdviceFilter();
+    }
+
+
 
 
     @Bean

@@ -11,6 +11,8 @@ debug: false
 #--------------------------Server--------------------------
 server:
   port: 8081
+  tomcat:
+    uri-encoding: UTF-8
   servlet:
     context-path:
 
@@ -27,6 +29,7 @@ spring:
     encoding:
       charset: UTF-8
       enabled: true
+      force: true
 
 
 #--------------------------banner--------------------------
@@ -100,6 +103,8 @@ spring:
 #--------------------------mvc--------------------------
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
 
 #--------------------------druid--------------------------
@@ -138,11 +143,27 @@ management:
 
 logging:
   path: D:\\logs\\
+  # 显示mybatis的sql
+  level:
+    com:
+     simply:
+      zuozuo:
+        mapper: debug
 
 
 
+#--------------------------短信--------------------------
 
-
+aliyun:
+  sms:
+    accessKeyId: LTAI1PdnwD8ccDna
+    accessKeySecret: xZiWyKQAnWKno0Ut7MX6pPsRlAVRun
+    product: Dysmsapi
+    domain: dysmsapi.aliyuncs.com
+    regionId: cn-hangzhou
+    signName: OnlineZuozuo
+    dateFormat: yyyyMMdd
+    endpointName: cn-hangzhou
 
 
 

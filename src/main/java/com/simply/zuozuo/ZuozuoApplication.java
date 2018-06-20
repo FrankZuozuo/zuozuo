@@ -2,6 +2,7 @@
 
 package com.simply.zuozuo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -20,17 +21,16 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 
 @SpringBootApplication
-
-/**
- * 启动 ServletComponent 扫描
- */
+// 开启ServletComponent 扫描
 @ServletComponentScan
-
+// 开启AsoectJ 支持的AOP
 @EnableAspectJAutoProxy
-
+// 开启webMvc
 @EnableWebMvc
-
+// 开启异步支持
 @EnableAsync
+// 开启mybatis mapper接口扫描
+@MapperScan(basePackages = {"com.simply.zuozuo.dao.mapper"})
 public class ZuozuoApplication {
 
 

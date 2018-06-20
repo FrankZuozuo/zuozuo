@@ -15,7 +15,15 @@ public class JedisSingleton {
 
     private static Jedis jedis = null;
     private static class InsideSingleton {
-        private static Jedis jedisSingleton = new Jedis();
+
+
+        private static Jedis initJedis(){
+            Jedis jedis = new Jedis();
+            jedis.auth("");
+            return jedis;
+        }
+
+        private static Jedis jedisSingleton = initJedis();
     }
 
     public static Jedis getInstance() {
@@ -28,6 +36,7 @@ public class JedisSingleton {
     public Object readResolve() {
         return jedis;
     }
+
 
 
 

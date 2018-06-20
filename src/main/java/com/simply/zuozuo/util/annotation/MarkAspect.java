@@ -1,6 +1,8 @@
 package com.simply.zuozuo.util.annotation;
 
 import com.simply.zuozuo.entity.po.User;
+import com.simply.zuozuo.exception.ParameterIllegalityException;
+import com.simply.zuozuo.util.BindingResultUtils;
 import com.simply.zuozuo.util.Print;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -8,6 +10,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.BindingResult;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -52,10 +55,18 @@ public class MarkAspect implements Cut {
 
     @Before("baseCut()")
     @Override
-    public void before(JoinPoint joinPoint) {
+    public void before(JoinPoint joinPoint) throws ParameterIllegalityException{
 
 
-
+        Object[] args = joinPoint.getArgs();
+        for (Object arg : args) {
+            if (arg instanceof BindingResult){
+                BindingResult bindingResult = (BindingResult) arg;
+                if (bindingResult.hasErrors()){
+                   BindingResultUtils.captureError(bindingResult);
+                }
+            }
+        }
 
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();

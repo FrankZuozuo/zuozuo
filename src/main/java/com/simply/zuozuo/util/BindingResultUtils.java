@@ -1,7 +1,5 @@
 package com.simply.zuozuo.util;
 
-import com.simply.zuozuo.consts.enums.CustomMetaData;
-import com.simply.zuozuo.controller.Api;
 import com.simply.zuozuo.exception.ParameterIllegalityException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
@@ -18,10 +16,7 @@ import java.util.List;
 public class BindingResultUtils {
 
 
-
-
-
-    public static Api captureError(BindingResult bindingResult) {
+    public static void captureError(BindingResult bindingResult) {
 
         StringBuffer error = new StringBuffer(50);
         error.append(" ");
@@ -36,7 +31,9 @@ public class BindingResultUtils {
                             .append("\n ");
                 }
         );
-        return Api.returnWith().fail(new CustomMetaData(499, "由于存在非法参数，服务器拒绝响应。", error.toString()));
+
+        throw new ParameterIllegalityException(error.toString());
+        //    return Api.returnWith().fail(new CustomMetaData(499, "由于存在非法参数，服务器拒绝响应。", error.toString()));
 
     }
 }

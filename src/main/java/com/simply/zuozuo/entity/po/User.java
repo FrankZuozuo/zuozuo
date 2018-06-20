@@ -1,6 +1,6 @@
 package com.simply.zuozuo.entity.po;
 
-import com.simply.zuozuo.entity.validate.group.UserGroup;
+import com.simply.zuozuo.entity.valid.group.UserGroup;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;

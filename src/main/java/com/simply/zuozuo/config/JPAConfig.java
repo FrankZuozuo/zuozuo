@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
         // basePackages 支持多包扫描，用文本数组的形式就可以
         // 比如这样 {"com.simply.zuozuo.repo","com.simply.zuozuo.mapper"}
         basePackages = {
-                "com.simply.zuozuo.repo"
+                "com.simply.zuozuo.dao.mapper.repo"
         },
         value = {},
         // 指定里面的存储库类

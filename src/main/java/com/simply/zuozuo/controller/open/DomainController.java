@@ -6,18 +6,15 @@ package com.simply.zuozuo.controller.open;
  * # @email : m15197447018@gmail.com
  */
 
-import com.simply.zuozuo.controller.Api;
+import com.simply.zuozuo.common.ApiResponse;
 import com.simply.zuozuo.entity.po.open.DomainIPPO;
-import com.simply.zuozuo.repo.open.DomainIPRepo;
-import com.simply.zuozuo.util.CopyPropertiesUtils;
+import com.simply.zuozuo.dao.repo.open.DomainIPRepo;
 import com.simply.zuozuo.util.PingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.concurrent.TimeoutException;
 
 /**
  * @author Created by 谭健 on 2018/4/23 0023. 星期一. 14:08.
@@ -41,10 +38,10 @@ public class DomainController {
 
     @GetMapping("/getIPByHostName")
     @ResponseBody
-    public Api getIPByHostName(DomainIPPO domainIPPO) {
+    public ApiResponse getIPByHostName(DomainIPPO domainIPPO) {
         String ip = PingUtils.getIPByHostName(domainIPPO.getHostName(), 1000);
         domainIPPO.setIp(ip);
         domainIPRepo.save(domainIPPO);
-        return Api.returnWith().success(ip);
+        return ApiResponse.returnWith().success(ip);
     }
 }
