@@ -10,7 +10,7 @@ debug: false
 
 #--------------------------Server--------------------------
 server:
-  port: 8081
+  port: 8080
   tomcat:
     uri-encoding: UTF-8
   servlet:
@@ -79,7 +79,7 @@ spring:
 
 #--------------------------jpa--------------------------
   jpa:
-    show-sql: true
+    show-sql: false
     open-in-view: false
 
 #--------------------------邮件服务--------------------------

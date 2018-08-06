@@ -1,6 +1,8 @@
 package com.simply.zuozuo.controller.home;
 
+import com.alibaba.fastjson.JSON;
 import com.simply.zuozuo.common.ApiResponse;
+import com.simply.zuozuo.consts.enums.HttpStatusEnum;
 import com.simply.zuozuo.entity.po.User;
 import com.simply.zuozuo.dao.repo.UserRepo;
 import com.simply.zuozuo.util.Print;
@@ -14,6 +16,10 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author Created by 谭健 on 2018/4/19 0019. Thursday. 14:22.
@@ -82,6 +88,26 @@ public class LoginController {
     public ApiResponse getUser() {
         Subject currentUser = SecurityUtils.getSubject();
         return ApiResponse.returnWith().success(currentUser.getSession().getAttribute("user"));
+    }
+
+
+
+    @GetMapping("/403")
+    public ApiResponse _403(HttpServletRequest request, HttpServletResponse response){
+
+        ApiResponse fail = ApiResponse.returnWith().fail(HttpStatusEnum.UNAUTHORIZED);
+        String XRequestedWith = request.getHeader("X-Requested-With");
+        boolean isAjax = "XMLHttpRequest".equalsIgnoreCase(XRequestedWith);
+        if (isAjax){
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json");
+            try {
+                response.getWriter().println(JSON.toJSONString(fail));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return fail;
     }
 
 

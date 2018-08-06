@@ -2,6 +2,7 @@ package com.simply.zuozuo.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -9,17 +10,19 @@ import redis.clients.jedis.Jedis;
  * © All Rights Reserved.
  */
 
+@Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JedisSingleton {
 
 
     private static Jedis jedis = null;
+
     private static class InsideSingleton {
 
 
-        private static Jedis initJedis(){
+        private static Jedis initJedis() {
             Jedis jedis = new Jedis();
-            jedis.auth("");
+           // jedis.auth("");
             return jedis;
         }
 
@@ -36,9 +39,6 @@ public class JedisSingleton {
     public Object readResolve() {
         return jedis;
     }
-
-
-
 
 
 }

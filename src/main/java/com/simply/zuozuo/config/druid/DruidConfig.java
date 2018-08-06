@@ -10,6 +10,8 @@ import javax.sql.DataSource;
 /**
  * @author Created by 谭健 on 2018/4/8 0008. 星期日. 11:36.
  * © All Rights Reserved.
+ *
+ * druid 连接池配置
  */
 public class DruidConfig {
 

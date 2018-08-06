@@ -11,6 +11,9 @@ import lombok.Getter;
 /**
  * @author Created by 谭健 on 2018/6/1 0001. 星期五. 14:19.
  * © All Rights Reserved.
+ *
+ *
+ * 阿里云 api 的配置， 可以接入阿里云第三方的 api
  */
 public class AliyunAPIConfig {
 

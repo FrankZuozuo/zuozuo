@@ -18,5 +18,6 @@ public class DateTimePattern {
             HH_MM = "HH:mm",
             HOUR = "HH",
             MINUTE = "mm",
+            WEEK = "EEEE",
             SECOND = "ss";
 }

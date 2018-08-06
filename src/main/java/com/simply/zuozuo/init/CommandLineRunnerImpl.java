@@ -1,6 +1,7 @@
 package com.simply.zuozuo.init;
 
 import com.simply.zuozuo.util.JedisSingleton;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
  * CommandLineRunner跟ApplicationRunner一样的功能
  */
 @Component
+@Slf4j
 public class CommandLineRunnerImpl implements CommandLineRunner{
 
     /**
@@ -19,6 +21,9 @@ public class CommandLineRunnerImpl implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-        JedisSingleton.getInstance().set("Service startup time", String.valueOf(System.nanoTime()));
+        log.info("向Redis 注册服务启动时间...");
+        Long startTime = System.nanoTime();
+        JedisSingleton.getInstance().set("Service startup time", String.valueOf(startTime));
+        log.info("向Redis 注册服务启动时间完成，注册值是 [{}]...",startTime);
     }
 }

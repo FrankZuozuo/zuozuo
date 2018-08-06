@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 /**
  * @author Created by 谭健 on 2018/4/8 0008. 星期日. 11,12.
  * © All Rights Reserved.
+ *
+ *
+ * druid 的 配置项，用来在项目中自动注入
  */
 
 @Slf4j

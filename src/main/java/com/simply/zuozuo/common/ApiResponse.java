@@ -18,6 +18,8 @@ import java.util.Date;
 /**
  * @author Created by 谭健 on 2018/4/16 0016. 星期一. 9:38.
  * © All Rights Reserved.
+ *
+ * 一个作为API 返回的对象
  */
 @Data
 @Accessors(chain = true)

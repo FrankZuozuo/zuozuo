@@ -49,7 +49,7 @@ public class FreeMarkerConfig {
     public void setConfigure() throws Exception {
 
 
-        log.info("ctx is : {}", ctx);
+        log.info("应用程序上下文路径是 : {}", ctx);
 
         // 加载html的资源路径
         configuration.setSharedVariable("ctx", ctx + "/static");

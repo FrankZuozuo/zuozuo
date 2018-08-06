@@ -61,7 +61,7 @@ public class ShiroConfig {
         //未授权界面;
         factoryBean.setUnauthorizedUrl("/403");
         // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
-        factoryBean.setLoginUrl("/blank");
+        factoryBean.setLoginUrl("/403");
         // 登录成功后要跳转的链接
         factoryBean.setSuccessUrl("/index");
         // 注册自定义的过滤器

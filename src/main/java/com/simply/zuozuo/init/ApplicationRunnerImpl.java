@@ -24,6 +24,6 @@ public class ApplicationRunnerImpl implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        log.info("Successful service startup!");
+        log.info("服务启动成功...");
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
@@ -31,6 +32,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableAsync
 // 开启mybatis mapper接口扫描
 @MapperScan(basePackages = {"com.simply.zuozuo.dao.mapper"})
+// 开启定时器
+@EnableScheduling
 public class ZuozuoApplication {
 
 

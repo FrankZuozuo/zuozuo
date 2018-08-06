@@ -33,7 +33,7 @@ public class WeiXin {
     private static JsApiTicket jsApiTicket;
     private static OAuthToken oAuthToken;
 
-    @PostConstruct
+  //  @PostConstruct
     public static Weixin init() {
         weixin = new Weixin();
         try {

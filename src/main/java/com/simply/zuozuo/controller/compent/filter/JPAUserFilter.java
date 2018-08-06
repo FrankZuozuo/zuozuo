@@ -29,6 +29,7 @@ import javax.persistence.criteria.Root;
 @AllArgsConstructor
 public class JPAUserFilter implements Specification<User> {
 
+    private static final long serialVersionUID = -219303168122852185L;
     private User user;
 
 
@@ -40,6 +41,4 @@ public class JPAUserFilter implements Specification<User> {
                 criteriaBuilder.like(root.get("of").as(String.class), "%" + user.getOf() + "%")
         );
     }
-
-
 }

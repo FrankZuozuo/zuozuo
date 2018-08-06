@@ -53,21 +53,23 @@ public class HandleAdviceFilter extends AdviceFilter {
     @Override
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
 
+        return true;
+
 
         // 如果前后端分离，通过ajax 通信
         // 需要对ajax 进行不同的处理，因为ajax 不能接受重定向返回的值
 
-
-        if (isAjaxRequest((HttpServletRequest) request)) {
-            if (isLoginRequest()) {
-                return true;
-            }
-            log.info("Ajax 请求没有登录或者授权。");
-            // 返回
-            response.setCharacterEncoding("utf-8");
-            response.setContentType("application/json");
-            response.getWriter().println(JSON.toJSONString(ApiResponse.returnWith().fail(HttpStatusEnum.UNAUTHORIZED)));
-        }
-        return false;
+//
+//        if (isAjaxRequest((HttpServletRequest) request)) {
+//            if (isLoginRequest()) {
+//                return true;
+//            }
+//            log.info("Ajax 请求没有登录或者授权。");
+//            // 返回
+//            response.setCharacterEncoding("utf-8");
+//            response.setContentType("application/json");
+//            response.getWriter().println(JSON.toJSONString(ApiResponse.returnWith().fail(HttpStatusEnum.UNAUTHORIZED)));
+//        }
+//        return false;
     }
 }
